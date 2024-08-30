@@ -7,6 +7,7 @@
   id: BaseMobSpecies
   abstract: true
   components:
+  - type: PPatient
   - type: Sprite
     layers:
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
@@ -104,6 +105,7 @@
         layer:
         - MobLayer
   - type: FloorOcclusion
+  - type: Mood
   - type: RangedDamageSound
     soundGroups:
       Brute:

@@ -1,0 +1,73 @@
+- type: entity
+  name: blood filter
+  parent: BaseItem
+  id: SurgeryItemBloodFilter
+  description: A surgical tool to perform dialysis on a poisoned patient.
+  components:
+  - type: Sprite
+    sprite: Palmtree/Objects/Specific/Medical/surgery.rsi
+    state: bloodfilter
+  - type: Item
+    storedRotation: 90
+  - type: PSurgeryTool # Palmtree change - I don't need to explain this one, do I?
+    audioStart:
+      path: "/Audio/Effects/beep1.ogg"
+    audioEnd:
+      path: "/Audio/Effects/double_beep.ogg"
+    kind: bloodfilter
+    damageOnUse:
+      types:
+        Poison: -15
+    useDelay: 3
+  - type: Tag
+    tags:
+      - SurgeryTool
+
+- type: entity
+  name: anti-rot spray
+  parent: BaseItem
+  id: SurgeryItemAntiRot
+  description: A surgical spray used to reduce rot with a NT patented compound. May be toxic.
+  components:
+  - type: Sprite
+    sprite: Palmtree/Objects/Specific/Medical/surgery.rsi
+    state: antirot
+  - type: Item
+    storedRotation: 90
+  - type: PSurgeryTool # Palmtree change - I don't need to explain this one, do I?
+    useDelay: 1
+    audioStart:
+      path: "/Audio/Effects/spray3.ogg"
+    audioEnd:
+      path: "/Audio/Effects/spray2.ogg"
+    kind: antirot
+    damageOnUse:
+      types:
+        Poison: 5
+  - type: Tag
+    tags:
+      - SurgeryTool
+
+# Placeholder PAIs, aka semi-automatic ghost roles
+
+- type: entity
+  parent: BaseItem
+  id: PhantomLinkCard
+  name: phantomlink card
+  description: Mysterious technology used to extract the soul of living things for conversion into borgs, this one can also insert consciousness into other bodies.
+  components:
+  - type: PSurgeryTool # Palmtree change - I don't need to explain this one, do I?
+    kind: phantomlink
+    useDelay: 5 # You gotta be sure.
+    damageOnUse:
+      types:
+        Shock: 50 # This is not good for your head
+  - type: BorgBrain
+  - type: Sprite
+    sprite: Objects/Fun/pai.rsi
+    layers:
+    - state: pai-base
+    - state: syndicate-pai-off-overlay
+      shader: unshaded
+      map: ["screen"]
+  - type: BlockMovement
